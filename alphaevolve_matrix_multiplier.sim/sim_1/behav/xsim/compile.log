@@ -1,0 +1,18 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/src/complex_multiplier.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module complex_multiplier
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/src/multiplier_array.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module multiplier_array
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/src/operand_tree_A.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module operand_tree_a
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/src/operand_tree_B.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module operand_tree_b
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/src/output_tree.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module output_tree
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/src/scale_div8.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module scale_div8
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/src/top.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module top
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/tb/identity_matrix_tb.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module identity_matric_tb
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Dev-Cpp/New folder/GitHub/alphaevolve_matrix_multiplier/alphaevolve_matrix_multiplier.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

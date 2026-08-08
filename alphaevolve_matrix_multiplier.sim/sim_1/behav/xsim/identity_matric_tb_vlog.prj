@@ -1,0 +1,16 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../src/complex_multiplier.sv" \
+"../../../../src/multiplier_array.sv" \
+"../../../../src/operand_tree_A.sv" \
+"../../../../src/operand_tree_B.sv" \
+"../../../../src/output_tree.sv" \
+"../../../../src/scale_div8.sv" \
+"../../../../src/top.sv" \
+"../../../../tb/identity_matrix_tb.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
