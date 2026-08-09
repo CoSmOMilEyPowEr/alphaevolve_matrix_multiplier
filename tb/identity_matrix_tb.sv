@@ -1,108 +1,76 @@
 `timescale 1ns/1ps
 
-module identity_matric_tb;
+module top_tb;
 
-    parameter W = 16;
+parameter W = 16;
 
-    //-------------------------------------------------
-    // DUT signals
-    //-------------------------------------------------
+logic clk;
+logic rst;
 
-    logic signed [W-1:0] Areal [15:0];
-    logic signed [W-1:0] Aimag [15:0];
+logic signed [W-1:0] Areal [15:0];
+logic signed [W-1:0] Aimag [15:0];
 
-    logic signed [W-1:0] Breal [15:0];
-    logic signed [W-1:0] Bimag [15:0];
+logic signed [W-1:0] Breal [15:0];
+logic signed [W-1:0] Bimag [15:0];
 
-    logic signed [2*(W+7):0] CReal [15:0];
-    logic signed [2*(W+7):0] CImag [15:0];
+logic signed [2*(W+7):0] CReal [15:0];
+logic signed [2*(W+7):0] CImag [15:0];
 
-    //-------------------------------------------------
-    // DUT
-    //-------------------------------------------------
+top #(
+    .W(W)
+) dut (
 
-    top #(
-        .W(W)
-    ) dut (
-        .Areal(Areal),
-        .Aimag(Aimag),
-        .Breal(Breal),
-        .Bimag(Bimag),
-        .CReal(CReal),
-        .CImag(CImag)
-    );
+    .clk(clk),
+    .rst(rst),
 
-    integer i;
+    .Areal(Areal),
+    .Aimag(Aimag),
 
-    initial begin
+    .Breal(Breal),
+    .Bimag(Bimag),
 
-        //-------------------------------------------------
-        // Initialize
-        //-------------------------------------------------
+    .CReal(CReal),
+    .CImag(CImag)
+);
 
-        for(i=0;i<16;i++) begin
-            Areal[i] = 0;
-            Aimag[i] = 0;
-            Breal[i] = 0;
-            Bimag[i] = 0;
-        end
 
-        //-------------------------------------------------
-        // Example Matrix A
-        //-------------------------------------------------
+always #5 clk = ~clk;
 
-        Areal[0]  = 1;
-        Areal[1]  = 2;
-        Areal[2]  = 3;
-        Areal[3]  = 4;
+initial begin
 
-        Areal[4]  = 5;
-        Areal[5]  = 6;
-        Areal[6]  = 7;
-        Areal[7]  = 8;
+    clk = 0;
+    rst = 1;
 
-        Areal[8]  = 9;
-        Areal[9]  = 10;
-        Areal[10] = 11;
-        Areal[11] = 12;
-
-        Areal[12] = 13;
-        Areal[13] = 14;
-        Areal[14] = 15;
-        Areal[15] = 16;
-
-        //-------------------------------------------------
-        // Example Matrix B (Identity)
-        //-------------------------------------------------
-
-        Breal[0]  = 1;
-        Breal[5]  = 1;
-        Breal[10] = 1;
-        Breal[15] = 1;
-
-        //-------------------------------------------------
-        // Wait for combinational logic
-        //-------------------------------------------------
-
-        #10;
-
-        //-------------------------------------------------
-        // Print Result
-        //-------------------------------------------------
-
-        $display("--------------------------------------");
-        $display("Result Matrix");
-        $display("--------------------------------------");
-
-        for(i=0;i<16;i++) begin
-            $display("C[%0d] = %0d + j%0d",
-                i,
-                CReal[i],
-                CImag[i]);
-        end
-
-        $finish;
-
+    for (int i=0;i<16;i++) begin
+        Areal[i] = 0;
+        Aimag[i] = 0;
+        Breal[i] = 0;
+        Bimag[i] = 0;
     end
+
+    #20;
+    rst = 0;
+
+    // Example matrix A
+    Areal[0]=1;  Areal[1]=2;  Areal[2]=3;  Areal[3]=4;
+    Areal[4]=5;  Areal[5]=6;  Areal[6]=7;  Areal[7]=8;
+    Areal[8]=9;  Areal[9]=10; Areal[10]=11; Areal[11]=12;
+    Areal[12]=13; Areal[13]=14; Areal[14]=15; Areal[15]=16;
+
+    // Example matrix B
+    Breal[0]=1; Breal[5]=1; Breal[10]=1; Breal[15]=1;
+
+    // Wait for pipeline
+    repeat(10) @(posedge clk);
+
+    $display("Result:");
+
+    for(int i=0;i<16;i++)
+        $display("C[%0d] = %0d + j%0d",
+                  i,CReal[i],CImag[i]);
+
+    $finish;
+
+end
 
 endmodule
